@@ -8,6 +8,7 @@ defmodule Discuss.User do
     field :provider, :string
     field :token, :string
     has_many :topics, Discuss.Topic, foreign_key: :user_id
+    has_many :comments, Discuss.Comment
 
     timestamps(type: :utc_datetime)
   end

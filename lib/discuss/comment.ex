@@ -1,19 +1,19 @@
-defmodule Discuss.Topic do
+defmodule Discuss.Comment do
   use Ecto.Schema
 
   import Ecto.Changeset
 
-  schema "topics" do
-    field :title, :string
+  schema "comments" do
+    field :content, :string
     belongs_to :user, Discuss.User
-    has_many :comments, Discuss.Comment
+    belongs_to :topic, Discuss.Topic
 
     timestamps(type: :utc_datetime)
   end
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title])
-    |> validate_required([:title])
+    |> cast(params, [:content])
+    |> validate_required([:content])
   end
 end
